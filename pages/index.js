@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import tw from "tailwind-styled-components";
 import Map from "./Components/Map"
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -26,10 +27,12 @@ export default function Home() {
           </Profile>
         </Header>
         <ActionButtons>
-          <ActionButton>
-            <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
-            Ride
-          </ActionButton>
+          <Link href="/search">
+            <ActionButton>
+              <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
+              Ride
+            </ActionButton>
+          </Link>
           <ActionButton>
             <ActionButtonImage src="https://i.ibb.co/n776JLm/bike.png" />
             wheels
@@ -39,8 +42,7 @@ export default function Home() {
             Reserve
           </ActionButton>
         </ActionButtons>
-        <InputButton> Where to?
-        </InputButton>
+        <InputButton> Where to?</InputButton>
       </ActionItems>
     </Wrapper>
   );
