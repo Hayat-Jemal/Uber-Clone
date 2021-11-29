@@ -3,46 +3,91 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import tw from "tailwind-styled-components";
-import mapboxgl from "!mapbox-gl";
+import Map from "./Components/Map"
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiaGF5YXRqIiwiYSI6ImNrdzJraDJlamJyMHIybnF3MjBieGhyM2MifQ.t9i-WA_YRVJY-e6HZY-ipg";
 
 export default function Home() {
 
-  useEffect(() => {
-     const map = new mapboxgl.Map({
-       container: "map",
-       style: "mapbox://styles/mapbox/streets-v11",
-       center: [-9.29011, 39.39172],
-       zoom: 3,
-     })
-  },[])
-  // const map = new mapboxgl.Map({
-  //   container: "YOUR_CONTAINER_ELEMENT_ID",
-  //   style: "mapbox://styles/mapbox/streets-v11",
-  //   center:6,
-  //   zoom:3
-  // });
-
-
+ 
+// what are component?  Reusable ui element
   
   return (
     <Wrapper>
-      <Map id="map">map</Map>
-      <ActionItems>start</ActionItems>
+      <Map />
+      <ActionItems>
+        {/* <Header /> */}
+        {/* <ActionButtons /> */}
+        {/* <InputButton/> */}
+        <Header>
+          <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
+          <Profile>
+            <Name> hi</Name>
+            <UserImage />
+          </Profile>
+        </Header>
+        <ActionButtons>
+          <ActionButton>
+            <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
+            Ride
+          </ActionButton>
+          <ActionButton>
+            <ActionButtonImage src="https://i.ibb.co/n776JLm/bike.png" />
+            wheels
+          </ActionButton>
+          <ActionButton>
+            <ActionButtonImage src="https://i.ibb.co/5RjchBg/uberschedule.png" />
+            Reserve
+          </ActionButton>
+        </ActionButtons>
+        <InputButton> Where to?
+        </InputButton>
+      </ActionItems>
     </Wrapper>
-  )
+  );
 }
 
 const Wrapper = tw.div`
-flex flex-col bg-red-300 h-screen
-`
-const Map = tw.div`
-bg-red-500 flex-1
-`
+flex flex-col  h-screen bg-red-300
+`;
+// const Map = tw.div`
+// bg-red-500 flex-1
 
 const ActionItems = tw.div`
-flex-1
+flex-1 p-4
+`
+
+const Header = tw.div`
+flex justify-between items-center
+`
+const UberLogo = tw.img`
+h-28
 
 `
+const Profile = tw.div`
+flex items-center
+`
+const Name = tw.div`
+mr-4 w-20 text-sm
+`
+const UserImage = tw.img`
+h-12 w-12 rounded-full border-gray-200 p-px
+`
+
+const ActionButtons = tw.div`
+flex
+`
+const ActionButton = tw.div`
+flex bg-gray-200 flex-1 m-1 h-32 items-center flex-col justify-center rounded-lg 
+transform hover:scale-105 transition text-xl
+
+`;
+
+const ActionButtonImage = tw.img`
+h-3/5 
+`
+const InputButton = tw.div`
+h-20 bg-gray-200 text-2xl p-4 flex items-center mt-8
+`
+
+
+
