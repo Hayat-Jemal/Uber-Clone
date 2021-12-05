@@ -6,7 +6,7 @@ const confirm = () => {
         <Wrapper>
             <Map />
             <RideContainer>
-
+rise
             </RideContainer>
         </Wrapper>
     )

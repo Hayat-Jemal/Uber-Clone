@@ -1,10 +1,9 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "!mapbox-gl";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaGF5YXRqIiwiYSI6ImNrdzJraDJlamJyMHIybnF3MjBieGhyM2MifQ.t9i-WA_YRVJY-e6HZY-ipg";
-
 
 const Map = () => {
   useEffect(() => {
@@ -14,7 +13,13 @@ const Map = () => {
       center: [-9.29011, 39.39172],
       zoom: 3,
     });
-  }, []);
+   addToMap(map)
+  })
+  const addToMap = (map) => {
+     const marker1 = new mapboxgl.Marker()
+       .setLngLat([12.554729, 55.70651])
+       .addTo(map);
+  }
   // const map = new mapboxgl.Map({
   //   container: "YOUR_CONTAINER_ELEMENT_ID",
   //   style: "mapbox://styles/mapbox/streets-v11",
@@ -29,4 +34,4 @@ const Wrapper = tw.div`
 flex-1
 `;
 
-export default Map
+export default Map;
