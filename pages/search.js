@@ -1,13 +1,18 @@
-import React from "react";
+import {useState} from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
 function Search() {
+
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
+  console.log(pickup)
+  console.log(dropoff)
   return (
     <Wrapper>
       <ButtonContainer>
         <Link href="/">
-        <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
-      </Link>
+          <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
+        </Link>
       </ButtonContainer>
       <InputContainer>
         <FromToIcons>
@@ -16,19 +21,27 @@ function Search() {
           <Square src="https://img.icons8.com/windows/50/000000/square-full.png" />
         </FromToIcons>
         <InputBoxes>
-          <Input placeholder="Enter pickup location"/>
-          <Input placeholder="Where to?"/>
-        
+          <Input placeholder="Enter pickup location" value={pickup}
+            onChange={(e) => setPickup(e.target.value)}/>
+          <Input placeholder="Where to?"
+            value={dropoff}
+            onChange={(e) => setDropoff(e.target.value)}/>
         </InputBoxes>
-        <PlusIcon src="https://img.icons8.com/ios/50/000000/plus-math.png"/>
+        <PlusIcon src="https://img.icons8.com/ios/50/000000/plus-math.png" />
       </InputContainer>
       <SavedPlaces>
-        <StarIcon  src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png"/>
-      Saved Places
+        <StarIcon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
+        Saved Places
       </SavedPlaces>
-      <ConfirmButtonContainer>
-        Confirm locations
-      </ConfirmButtonContainer>
+      <Link href={{
+        pathname: "/confirm",
+        query: {
+          pickup: pickup,
+          dropoff:dropoff
+      }
+      }}>
+        <ConfirmButtonContainer>Confirm locations</ConfirmButtonContainer>
+      </Link>
       {/* Button container */}
       {/* input container */}
       {/* saved place */}
