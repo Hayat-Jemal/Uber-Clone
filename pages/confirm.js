@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import Map from "./Components/Map";
+import { useRouter } from "next/router";
+import RideSelector from "./Components/RideSelector";
 const Confirm = () => {
+  const router = useRouter();
+  const { pickup, dropoff } = router.query;
+  console.log("pickup", pickup);
+  console.log("dropoff", dropoff);
+
   const [pickupCoordinates, setPickupCoordinates] = useState();
   const [dropoffCoordinates, setDropoffCoordinates] = useState();
 
-  const getPickupgetCoordinates = () => {
-    const pickup = "Jiddah";
+  const getPickupgetCoordinates = (pickup) => {
+    // const pickup = "Jiddah";
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
         new URLSearchParams({
@@ -22,8 +29,8 @@ const Confirm = () => {
       });
     //?acess_token
   };
-  const getDropoffCoordinates = () => {
-    const dropoff = "Mekkah";
+  const getDropoffCoordinates = (dropoff) => {
+    // const dropoff = "Mekkah";
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
         new URLSearchParams({
@@ -41,9 +48,9 @@ const Confirm = () => {
   };
 
   useEffect(() => {
-    getPickupgetCoordinates();
-    getDropoffCoordinates();
-  }, []);
+    getPickupgetCoordinates(pickup);
+    getDropoffCoordinates(dropoff);
+  }, [pickup, dropoff]);
   console.log(pickupCoordinates);
 
   return (
@@ -53,19 +60,28 @@ const Confirm = () => {
         dropoffCoordinates={dropoffCoordinates}
       />
       <RideContainer>
-        Ride Selector confirm Button
-        {/* to check */}
-        {/* {pickupCoordinates}
-             {dropoffCoordinates} */}
+        <RideSelector />
+
+        <ConfirmButtonContainer>
+          <ConfirmButton>Confirm UberX</ConfirmButton>
+        </ConfirmButtonContainer>
       </RideContainer>
     </Wrapper>
   );
 };
 
-export default Confirm;
 
+export default Confirm;
+const ConfirmButton = tw.div`
+bg-black text-white my-4 mx-4 py-4 text-center text-xl
+`;
+
+
+const ConfirmButtonContainer = tw.div`
+border-t-2
+`;
 const RideContainer = tw.div`
-flex-1 
+flex-1  flex flex-col h-1/2
 `;
 
 const Wrapper = tw.div`

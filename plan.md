@@ -6,3 +6,7 @@
 6,Add the pickup and dropoff  as markers on the map
 7,add a auto zoom to be able to zoom into the markers
 8,pass in location data into confirm page
+9,use the passed in data to put it on map
+10,create the HTML for ride selector
+11,calculate the price of the uber
+12,add Login

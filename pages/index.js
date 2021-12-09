@@ -49,7 +49,7 @@ export default function Home() {
 }
 
 const Wrapper = tw.div`
-flex flex-col  h-screen bg-red-300
+flex flex-col  h-screen 
 `;
 // const Map = tw.div`
 // bg-red-500 flex-1
