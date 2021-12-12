@@ -30,6 +30,7 @@ const Title = tw.div`
 text-5xl pt-4 text-gray-500
 
 `
+
 const HeadImage = tw.img`
 object-contain w-full
 `
